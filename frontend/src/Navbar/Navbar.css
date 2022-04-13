@@ -1,0 +1,73 @@
+.navbar-items {
+    background: linear-gradient(90deg, rgb(90, 90, 90) 0%, rgb(55, 55, 55) 100%);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size:  1.2rem;
+}
+
+.navbar-logo {
+    color: white;
+    margin-left: 20px;
+}
+
+.navbar-left {
+    display: flex;
+    margin-right: auto;
+    margin-left: 20em;
+    margin-top: 5px;
+}
+
+.device-tab {
+    margin-left: 50px;
+}
+
+.navbar-right {
+    float: right; 
+    margin-left: auto;
+    margin-right: 20em;
+}
+
+.fa-house-signal {
+    margin-left: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.device-tab {
+    margin-left: 50px;
+    font-size: 32px;
+    text-decoration: none;
+    color: rgb(255, 255, 255)
+}
+
+.device-tab:hover {
+    color: rgb(255, 145, 0);
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.active {
+    color: rgb(255, 187, 0) 
+}
+
+.btn {
+    margin-right: 5rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: rgb(0, 157, 255);
+}
+
+.btn:hover {
+    background: #234FDC;
+    color: #c0c0c0;
+    transition-duration: 0.2s;
+}
+
+.logo-header {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.logo-header:hover {
+    color: rgb(197, 197, 197);
+}
