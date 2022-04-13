@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Device.css'
 
@@ -55,12 +56,18 @@ export const Device = () => {
         return date.toLocaleString();
     }
 
-    const redirectToDashboard = (_id) => {;
-        window.location = `/dashboard?id=${_id}`
+    const navigate = useNavigate(); 
+    const redirectToDashboard = (_id) => {
+        navigate(`/dashboard?id=${_id}`);
+    }
+
+    const redirectToAddDevice = () => {
+        navigate("/device/add");
     }
 
     return (
         <div className="container">
+            <button className="btn add-device-btn" onClick={() => redirectToAddDevice()}>Add device</button>
             <table className="table">
                 <thead>
                     <tr>

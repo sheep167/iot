@@ -9,3 +9,5 @@ venv/
 
 # Dependency directories
 node_modules/
+
+.idea

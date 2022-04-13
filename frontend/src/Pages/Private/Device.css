@@ -27,3 +27,20 @@ td {
     margin:auto;
     display:block;
 }
+
+.add-device-btn {
+    background: rgb(9, 152, 73);
+    margin:auto;
+    display:block;
+}
+
+.add-device-btn:hover {
+    background: rgb(9, 101, 9);
+}
+
+
+.add-device-page {
+    width: 500px;
+    padding: 8% 0 0;
+    margin: auto;
+}

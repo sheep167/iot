@@ -11,8 +11,8 @@ from iot.exception import *
 @app.route("/api/v1/device", methods=["POST"])
 @jwt_required()
 def create_device():
-    data = request.get_json()
     try:
+        data = request.get_json()
         name = data.get("name")
         _type = data.get("type")
 
