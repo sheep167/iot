@@ -49,6 +49,54 @@ def get_device_by_id(device_id):
         return "Device id not found", 400
 
 
+@app.route("/api/v1/device/<device_id>", methods=["PUT"])
+@jwt_required()
+def update_device_by_id(device_id):
+    try:
+        if not device_id:
+            raise RequiredFieldError
+
+        data = request.get_json()
+        print(data)
+        name = data.get("name")
+        _type = data.get("type")
+
+        if not (name or _type):
+            raise RequiredFieldError
+
+        device_requested = Device.get_device_by_id(device_id)
+        if not device_requested:
+            return "No such device or not owned by you", 404
+
+        if device_requested.is_owned_by_current_user():
+            db.device.update_one({"_id": ObjectId(device_id)}, {"$set": {"name": name, "type": _type}})
+            return "", 204
+        return "No such device or not owned by you", 404
+
+    except RequiredFieldError:
+        return "Device id not found", 400
+
+
+@app.route("/api/v1/device/<device_id>", methods=["DELETE"])
+@jwt_required()
+def delete_device_by_id(device_id):
+    try:
+        if not device_id:
+            raise RequiredFieldError
+
+        device_requested = Device.get_device_by_id(device_id)
+        if not device_requested:
+            return "No such device or not owned by you", 404
+
+        if device_requested.is_owned_by_current_user():
+            db.device.delete_one({"_id": ObjectId(device_id)})
+            return "", 204
+        return "No such device or not owned by you", 404
+
+    except RequiredFieldError:
+        return "Device id not found", 400
+
+
 @app.route("/api/v1/device/<device_id>/telemetry_attributes", methods=["GET"])
 @jwt_required()
 def get_device_telemetry_attribute(device_id):

@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./Navbar/Navbar";
-import { Login, Logout, Register, Device, AddDevice, Dashboard } from "./Pages/index";
+import { Login, Logout, Register, Device, DeviceForm, Dashboard } from "./Pages/index";
 import { ProtectedRoute } from "./ProtectedRoute"
 import { useAuth } from "./useAuth"
 
@@ -17,7 +17,7 @@ function App() {
                 <Route path="register" element={<Register/>}/>
                 <Route element={<ProtectedRoute/>}>
                     <Route path="device" element={<Device/>}/>
-                    <Route path="device/add" element={<AddDevice/>}/>
+                    <Route path="device/form" element={<DeviceForm/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
                 </Route>
             </Routes>

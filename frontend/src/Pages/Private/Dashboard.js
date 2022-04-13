@@ -63,7 +63,7 @@ export const Dashboard = () => {
             },
             title: {
                 display: true,
-                text: 'Temp and Hum',
+                text: 'Temperature and Humidity (5mins)',
                 color: '#000000',
                 font: {
                     size: 30

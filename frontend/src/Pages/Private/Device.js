@@ -61,13 +61,23 @@ export const Device = () => {
         navigate(`/dashboard?id=${_id}`);
     }
 
-    const redirectToAddDevice = () => {
-        navigate("/device/add");
+    const redirectToDeviceForm = (method, _id=undefined, name=undefined, type=undefined) => {
+        navigate("/device/form", {state:{method, _id, name, type}});
+    }
+
+    const deleteDevice = (_id) => {
+        const options = {
+            method: "DELETE",
+            url: `http://localhost:5000/api/v1/device/${_id}`,
+            withCredentials: true,
+        }
+        axios(options)
+        .then(() => window.location.reload())
     }
 
     return (
         <div className="container">
-            <button className="btn add-device-btn" onClick={() => redirectToAddDevice()}>Add device</button>
+            <button className="btn add-btn" onClick={() => redirectToDeviceForm("POST")}>Add device</button>
             <table className="table">
                 <thead>
                     <tr>
@@ -77,6 +87,8 @@ export const Device = () => {
                         <th>Latest Telemetry</th>
                         <th>At Time</th>
                         <th>To Dashboard</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,6 +100,8 @@ export const Device = () => {
                             <td>{d.latest_telemetry === undefined ? "" : JSON.stringify(d.latest_telemetry.telemetry)}</td>
                             <td>{d.latest_telemetry === undefined ? "" : timestampToDate(d.latest_telemetry.ts)}</td>
                             <td><button className="btn table-btn" onClick={() => redirectToDashboard(d._id)}>Go</button></td>
+                            <td><button className="btn edit-btn" onClick={() => redirectToDeviceForm("PUT", d._id, d.name, d.type)}>Edit</button></td>
+                            <td><button className="btn delete-btn" onClick={() => deleteDevice(d._id)}>DELETE</button></td>
                         </tr>
                     )) }
                 </tbody>

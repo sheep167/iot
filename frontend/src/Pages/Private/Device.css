@@ -28,18 +28,39 @@ td {
     display:block;
 }
 
-.add-device-btn {
+.add-btn {
     background: rgb(9, 152, 73);
     margin:auto;
-    display:block;
+    display: block;
 }
 
-.add-device-btn:hover {
+.add-btn:hover {
     background: rgb(9, 101, 9);
 }
 
+.edit-btn {
+    background: rgb(251, 184, 49);
+    margin:auto;
+    display: block;
+}
 
-.add-device-page {
+.edit-btn:hover {
+    background: rgb(238, 167, 15);
+    color: black
+}
+
+.delete-btn {
+    background: rgb(227, 44, 7);
+    margin:auto;
+    display: block;
+}
+
+.delete-btn:hover {
+    background: rgb(200, 2, 2);
+    color: black
+}
+
+.device-page {
     width: 500px;
     padding: 8% 0 0;
     margin: auto;

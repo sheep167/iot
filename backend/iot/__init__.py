@@ -14,6 +14,7 @@ jwt = JWTManager()
 app.config['JWT_SECRET_KEY'] = 'dQw4w9WgXcQ'
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
 app.config['JWT_TOKEN_LOCATION'] = ['headers', 'cookies']
+app.config["JWT_COOKIE_CSRF_PROTECT"] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 jwt.init_app(app)
 
