@@ -1,8 +1,5 @@
 import time
-from xmlrpc.client import Boolean
-import requests
 import random
-import json
 from iot import app, mongo
 from iot.models.telemetry import Telemetry
 from iot.exception import *
@@ -41,7 +38,6 @@ def post_telemetry(device_id):
     try:
         if not device_id:
             raise RequiredFieldError
-        data = request.get_json()
 
         is_random = request.args.get("random", default=0, type=int)
         if is_random:
@@ -53,6 +49,7 @@ def post_telemetry(device_id):
             }
 
         else:
+            data = request.get_json()
             telemetry = data.get("telemetry")
 
             if not telemetry:
@@ -68,7 +65,7 @@ def post_telemetry(device_id):
         mongo.db.telemetry.insert_one(t.to_json())
         mongo.db.device.update_one({'_id': ObjectId(device_id)}, {'$set': {'latest_telemetry': {'ts': ts, 'telemetry': telemetry}}})
 
-        return "", 204
+        return "222", 200
 
     except RequiredFieldError:
         return "Required Field Error", 400
